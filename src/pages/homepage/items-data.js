@@ -1,4 +1,4 @@
-const itemsData = [
+export const itemsData = [
   {
     id: 'CM25001',
     name: 'GPT',
@@ -15,5 +15,3 @@ const itemsData = [
     quantity: 3
   }
 ]
-
-export default itemsData
