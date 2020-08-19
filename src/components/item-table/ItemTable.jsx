@@ -1,5 +1,5 @@
 import React from 'react';
-import './item-table.styles.css';
+import './item-table.styles.scss';
 
 import Item from '../item/Item';
 import itemsData from './items-data';

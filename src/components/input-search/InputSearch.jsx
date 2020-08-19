@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './input-search.styles.css';
+import './input-search.styles.scss';
 
 const InputSearch = ({placeholder, onChange}) => (
   <input 
