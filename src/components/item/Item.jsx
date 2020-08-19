@@ -7,7 +7,7 @@ const Item = ({item}) => {
   <tr className='Item'>
     {
       values.map(value =>
-        <td>{value}</td>
+        <td key={value}>{value}</td>
       )
     }
   </tr>

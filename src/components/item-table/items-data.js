@@ -1,16 +1,16 @@
 const itemsData = [
   {
-    id: 1,
+    id: 'CM25001',
     name: 'GPT',
     quantity: 3
   },
   {
-    id:2,
+    id:'CM25002',
     name: 'GOT',
     quantity: 3
   },
   {
-    id:3,
+    id:'CM25003',
     name: 'FAL',
     quantity: 3
   }
