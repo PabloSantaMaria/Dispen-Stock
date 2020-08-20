@@ -1,10 +1,14 @@
 import React from 'react'
 
-const Item = ({item}) => {
-  const values = Object.values(item);
+import { withRouter } from 'react-router-dom';
 
+import './item.scss';
+
+const Item = ({item, history}) => {
+  const values = Object.values(item);
+  
   return (
-  <tr className='Item'>
+  <tr className='Item' onClick={() => history.push(`/item/${item.id}`)}>
     {
       values.map(value =>
         <td key={value}>{value}</td>
@@ -13,4 +17,4 @@ const Item = ({item}) => {
   </tr>
 )}
 
-export default Item
+export default withRouter(Item)

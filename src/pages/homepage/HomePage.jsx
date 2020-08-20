@@ -1,4 +1,5 @@
 import React from 'react';
+import './home-page.styles.scss';
 
 import {itemsData} from './items-data';
 
