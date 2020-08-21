@@ -1,7 +1,7 @@
 import React from 'react';
 import './home-page.styles.scss';
 
-import {itemsData} from './items-data';
+import {ITEMS_DATA} from './items-data';
 
 import InputSearch from '../../components/input-search/InputSearch';
 import ItemsTable from '../../components/items-table/ItemsTable';
@@ -18,8 +18,8 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     this.setState({
-      items: itemsData,
-      keys: Object.keys(itemsData[0])
+      items: ITEMS_DATA,
+      keys: Object.keys(ITEMS_DATA[0])
     })
   }
 

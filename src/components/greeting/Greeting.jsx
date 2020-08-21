@@ -13,7 +13,7 @@ const Greeting = ({date}) => {
 
   return (
   <div className='Greeting'>
-        <span>{greeting}</span>
+    <span>{greeting}</span>
   </div>
 )}
 

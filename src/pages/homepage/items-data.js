@@ -1,4 +1,4 @@
-export const itemsData = [
+export const ITEMS_DATA = [
   {
     id: 'CM25001',
     name: 'GPT',
