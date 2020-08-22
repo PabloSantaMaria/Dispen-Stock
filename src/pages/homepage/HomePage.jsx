@@ -3,7 +3,7 @@ import './home-page.styles.scss';
 
 import {ITEMS_DATA} from './items-data';
 
-import InputSearch from '../../components/input-search/InputSearch';
+import SearchInput from '../../components/search-input/SearchInput';
 import ItemsTable from '../../components/items-table/ItemsTable';
 
 class HomePage extends React.Component {
@@ -31,7 +31,7 @@ class HomePage extends React.Component {
 
     return (
       <div className='HomePage'>
-        <InputSearch placeholder='Buscar reactivo' onChange={this.handleChange}/>
+        <SearchInput placeholder='Buscar reactivo' onChange={this.handleChange}/>
         <ItemsTable headers={this.state.keys} items={filteredItems}/>
       </div>
     )
