@@ -34,11 +34,11 @@ class SignIn extends React.Component {
   render() {
     const {email, password} = this.state;
     return (
-      <div className='SignIn'>
+      <div className='SignIn form'>
         <h2>Ya tengo una cuenta</h2>
         <span>Ingrese con su email y contraseña</span>
 
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <CustomInput type='email' name='email' value={email} required
             label='Email'
             handleChange={this.handleChange}
