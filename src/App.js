@@ -36,7 +36,7 @@ class App extends React.Component {
               id: userSnapshot.id,
               ...userSnapshot.data()
             }
-          }, () => console.log(this.state))
+          })
         });
       }
       else this.setState({currentUser: userAuth}); //setea el currentUser en null porque userAuth es null
