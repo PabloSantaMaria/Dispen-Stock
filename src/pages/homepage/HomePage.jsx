@@ -26,13 +26,15 @@ class HomePage extends React.Component {
   handleChange = e => this.setState({searchString: e.target.value})
 
   render() {
-    const filteredItems = this.state.items.filter(item => 
-      item.name.toLowerCase().includes(this.state.searchString.toLowerCase()))
+    const {items, keys, searchString} = this.state;
+
+    const filteredItems = items.filter(item => 
+      item.name.toLowerCase().includes(searchString.toLowerCase()))
 
     return (
       <div className='HomePage'>
         <SearchInput placeholder='Buscar reactivo' onChange={this.handleChange}/>
-        <ItemsTable headers={this.state.keys} items={filteredItems}/>
+        <ItemsTable headers={keys} items={filteredItems}/>
       </div>
     )
   }
