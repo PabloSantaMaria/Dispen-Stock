@@ -2,6 +2,9 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {auth, createUser} from './firebase/firebase.utils';
 
+import {connect} from 'react-redux';
+import {setCurrentUser} from './redux/user/userActions';
+
 import Header from './components/header/Header';
 import HomePage from './pages/homepage/HomePage';
 import ItemDetailsPage from './pages/item-details-page/ItemDetailsPage';
@@ -10,13 +13,6 @@ import LoginPage from './pages/login-page/LoginPage';
 import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null
-    }
-  }
 
   unsubscribeFromAuth = null;
 
@@ -31,15 +27,13 @@ class App extends React.Component {
         // pero tambien nos llega el primer estado de esa data
         // Eso usamos para setear el estado del currentUser
         userReference.onSnapshot(userSnapshot => {
-          this.setState ({
-            currentUser: {
-              id: userSnapshot.id,
-              ...userSnapshot.data()
-            }
+          this.props.setCurrentUser({
+            id: userSnapshot.id,
+            ...userSnapshot.data()
           })
         });
       }
-      else this.setState({currentUser: userAuth}); //setea el currentUser en null porque userAuth es null
+      else this.props.setCurrentUser(userAuth); //setea el currentUser en null porque userAuth es null
     })
   }
 
@@ -52,7 +46,7 @@ class App extends React.Component {
     
     return (
       <div className='App'>
-        <Header currentUser={this.state.currentUser}/>
+        <Header/>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={LoginPage} />
@@ -63,4 +57,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(App);
