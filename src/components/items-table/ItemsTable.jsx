@@ -3,7 +3,11 @@ import './items-table.styles.scss';
 
 import Item from '../item/Item';
 
-const ItemsTable = ({headers, items}) => (
+const ItemsTable = ({items}) => {
+
+  const headers = items.length ? Object.keys(items[0]) : [];
+
+  return (
   <div className='ItemsTable'>
     <table>
         <thead>
@@ -20,6 +24,6 @@ const ItemsTable = ({headers, items}) => (
         </tbody>
       </table>
   </div>
-)
+)}
 
 export default ItemsTable

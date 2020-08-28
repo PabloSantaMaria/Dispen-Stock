@@ -1,32 +1,22 @@
 import React from 'react';
 import './home-page.styles.scss';
 
-import {ITEMS_DATA} from './items-data';
+import {connect} from 'react-redux';
 
 import SearchInput from '../../components/search-input/SearchInput';
 import ItemsTable from '../../components/items-table/ItemsTable';
+import { setSearchString } from '../../redux/stock/stockActions';
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      items: [],
-      keys: [],
-      searchString: ''
-    }
+
+  componentWillUnmount() {
+    this.props.setSearchString('');
   }
 
-  componentDidMount() {
-    this.setState({
-      items: ITEMS_DATA,
-      keys: Object.keys(ITEMS_DATA[0])
-    })
-  }
-
-  handleChange = e => this.setState({searchString: e.target.value})
+  handleChange = e => this.props.setSearchString(e.target.value);
 
   render() {
-    const {items, keys, searchString} = this.state;
+    const {items, searchString} = this.props;
 
     const filteredItems = items.filter(item => 
       item.name.toLowerCase().includes(searchString.toLowerCase()))
@@ -34,10 +24,19 @@ class HomePage extends React.Component {
     return (
       <div className='HomePage'>
         <SearchInput placeholder='Buscar reactivo' onChange={this.handleChange}/>
-        <ItemsTable headers={keys} items={filteredItems}/>
+        <ItemsTable items={filteredItems}/>
       </div>
     )
   }
 }
 
-export default HomePage;
+const mapStateToProps = state => ({
+  items: state.stock.items,
+  searchString: state.stock.searchString
+})
+
+const mapDispatchToProps = dispatch => ({
+  setSearchString: searchString => dispatch(setSearchString(searchString))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
