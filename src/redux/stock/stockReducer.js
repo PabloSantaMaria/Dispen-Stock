@@ -18,7 +18,13 @@ const stockReducer = (state = INITIAL_STATE, action) => {
         ...state,
         searchString: action.payload
       }
-      
+    
+    case StockActionTypes.ADD_ITEM:
+      return {
+        ...state,
+        items: [...state.items, action.payload]
+      }
+
     default:
       return state;
   }

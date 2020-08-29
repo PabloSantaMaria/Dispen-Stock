@@ -3,6 +3,7 @@ import './home-page.styles.scss';
 
 import {connect} from 'react-redux';
 
+import AddItemForm from '../../components/add-item-form/AddItemForm';
 import SearchInput from '../../components/search-input/SearchInput';
 import ItemsTable from '../../components/items-table/ItemsTable';
 import { setSearchString } from '../../redux/stock/stockActions';
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
 
     return (
       <div className='HomePage'>
+        <AddItemForm/>
         <SearchInput placeholder='Buscar reactivo' onChange={this.handleChange}/>
         <ItemsTable items={filteredItems}/>
       </div>

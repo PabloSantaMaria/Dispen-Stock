@@ -22,7 +22,7 @@ const Header = ({currentUser}) => (
     }
     {
       currentUser ?
-      <div onClick={() => auth.signOut()}>Cerrar sesión</div> :
+      <div className='signOut' onClick={() => auth.signOut()}>Cerrar sesión</div> :
       <Link to='/login'>Ingresar</Link>
     }
   </div>
