@@ -6,3 +6,8 @@ export const selectItems = createSelector(
   [selectStock],
   stock => stock.items
 );
+
+export const selectSearchString = createSelector(
+  [selectStock],
+  stock => stock.searchString
+);

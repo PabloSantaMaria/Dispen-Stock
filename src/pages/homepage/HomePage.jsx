@@ -2,12 +2,13 @@ import React from 'react';
 import './home-page.styles.scss';
 
 import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
 import AddItemForm from '../../components/add-item-form/AddItemForm';
 import SearchInput from '../../components/search-input/SearchInput';
 import ItemsTable from '../../components/items-table/ItemsTable';
 import { setSearchString } from '../../redux/stock/stockActions';
-import {selectItems} from '../../redux/stock/stockSelectors';
+import {selectItems, selectSearchString} from '../../redux/stock/stockSelectors';
 
 class HomePage extends React.Component {
 
@@ -33,9 +34,9 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  items: selectItems(state),
-  searchString: state.stock.searchString
+const mapStateToProps = createStructuredSelector({
+  items: selectItems,
+  searchString: selectSearchString
 })
 
 const mapDispatchToProps = dispatch => ({

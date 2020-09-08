@@ -1,6 +1,8 @@
 import React from 'react';
 
+import {createStructuredSelector} from 'reselect';
 import {connect} from 'react-redux';
+import {selectItems} from '../../redux/stock/stockSelectors';
 
 const ItemDetails = ({itemId, items}) => {
   
@@ -14,8 +16,8 @@ const ItemDetails = ({itemId, items}) => {
   )
 }
 
-const mapStateToProps = state => ({
-  items: state.stock.items
+const mapStateToProps = createStructuredSelector({
+  items: selectItems
 })
 
 export default connect(mapStateToProps)(ItemDetails);

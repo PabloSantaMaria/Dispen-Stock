@@ -2,6 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
+import {selectCurrentUser} from '../../redux/user/userSelectors';
+
 import logo from '../../assets/laboratory.png';
 import './header.styles.scss'
 
@@ -28,8 +31,8 @@ const Header = ({currentUser}) => (
   </div>
 )
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(Header);
