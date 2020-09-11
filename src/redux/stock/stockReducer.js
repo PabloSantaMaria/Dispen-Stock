@@ -31,6 +31,25 @@ const stockReducer = (state = INITIAL_STATE, action) => {
         items: state.items.filter(item => item.id !== action.payload.id) //devuelve true con todos menos con el que quiero sacar
       }
 
+    case StockActionTypes.INCREASE_QTY:
+      return {
+        ...state,
+        items: state.items.map(
+          item => item.id === action.payload.id ? 
+          {...item, quantity: item.quantity + 1} :
+          item
+        )
+      }
+
+    case StockActionTypes.DECREASE_QTY:
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.payload.id && item.quantity > 0 ?
+          {...item, quantity: item.quantity - 1} :
+          item
+        )
+      }
     default:
       return state;
   }

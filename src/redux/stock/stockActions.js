@@ -19,3 +19,13 @@ export const removeItem = item => ({
   type: StockActionTypes.REMOVE_ITEM,
   payload: item
 });
+
+export const increaseQty = item => ({
+  type: StockActionTypes.INCREASE_QTY,
+  payload: item
+})
+
+export const decreaseQty = item => ({
+  type: StockActionTypes.DECREASE_QTY,
+  payload: item
+})
