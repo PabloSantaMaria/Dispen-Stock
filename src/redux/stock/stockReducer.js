@@ -24,6 +24,12 @@ const stockReducer = (state = INITIAL_STATE, action) => {
         ...state,
         items: [...state.items, action.payload]
       }
+    
+    case StockActionTypes.REMOVE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload.id) //devuelve true con todos menos con el que quiero sacar
+      }
 
     default:
       return state;

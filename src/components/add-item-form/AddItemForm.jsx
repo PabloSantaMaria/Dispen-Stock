@@ -18,7 +18,12 @@ class AddItemForm extends React.Component {
   }
 
   handleChange = e => {
-    const {name, value} = e.target;
+    const name = e.target.name;
+    let value = e.target.value;
+    
+    if (name === 'quantity')
+      value = parseInt(value);
+    
     this.setState({
       [name]: value
     });
@@ -28,6 +33,7 @@ class AddItemForm extends React.Component {
     e.preventDefault();
     const itemToAdd = {...this.state};
     console.log(itemToAdd);
+    
     this.props.addItem(itemToAdd);
   }
   

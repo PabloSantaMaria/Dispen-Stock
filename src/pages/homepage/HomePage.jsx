@@ -8,7 +8,7 @@ import AddItemForm from '../../components/add-item-form/AddItemForm';
 import SearchInput from '../../components/search-input/SearchInput';
 import ItemsTable from '../../components/items-table/ItemsTable';
 import { setSearchString } from '../../redux/stock/stockActions';
-import {selectItems, selectSearchString} from '../../redux/stock/stockSelectors';
+import {selectItems, selectSearchString, selectItemsTotal} from '../../redux/stock/stockSelectors';
 
 class HomePage extends React.Component {
 
@@ -19,7 +19,7 @@ class HomePage extends React.Component {
   handleChange = e => this.props.setSearchString(e.target.value);
 
   render() {
-    const {items, searchString} = this.props;
+    const {items, searchString, total} = this.props;
 
     const filteredItems = items.filter(item => 
       item.name.toLowerCase().includes(searchString.toLowerCase()))
@@ -28,6 +28,7 @@ class HomePage extends React.Component {
       <div className='HomePage'>
         <AddItemForm/>
         <SearchInput placeholder='Buscar reactivo' onChange={this.handleChange}/>
+        <span>Total: {total}</span>
         <ItemsTable items={filteredItems}/>
       </div>
     )
@@ -36,7 +37,8 @@ class HomePage extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   items: selectItems,
-  searchString: selectSearchString
+  searchString: selectSearchString,
+  total: selectItemsTotal
 })
 
 const mapDispatchToProps = dispatch => ({
